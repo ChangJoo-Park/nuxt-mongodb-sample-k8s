@@ -1,12 +1,16 @@
 import express from 'express'
 import bodyParser from 'body-parser'
+import { mongo } from './mongodb'
 
 export const createRouter = () => {
   const router = express.Router()
   router.use(bodyParser.json())
 
   router.get('/api/employees', (req, res) => {
-    return res.json([])
+    mongo((db) => {
+      console.log(db)
+      return res.json([])
+    })
   })
 
   router.post('/api/employees', (req, res) => {
