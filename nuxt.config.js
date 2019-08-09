@@ -28,6 +28,8 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~/plugins/axios.js',
+    '~/plugins/repository.js'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -60,5 +62,8 @@ module.exports = {
     */
     extend (config, ctx) {
     }
-  }
+  },
+  serverMiddleware: [
+    '~/api/router-middleware'
+  ]
 }
