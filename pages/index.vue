@@ -24,6 +24,9 @@
           GitHub
         </a>
       </div>
+      <div>
+        <nuxt-child />
+      </div>
     </div>
   </div>
 </template>
