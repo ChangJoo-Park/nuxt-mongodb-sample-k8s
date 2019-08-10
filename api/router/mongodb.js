@@ -6,21 +6,20 @@ const ensureConnect = () => {
   if (_db) {
     return Promise.resolve(_db)
   } else {
-    return new Promise((resolve, reject) => {
-      MongoClient.connect('mongodb://127.0.0.1:27017/employee', {
-        useNewUrlParser: true
-      }, (err, db) => {
-        if (!err) {
-          _db = db
-          resolve(db)
-        } else {
-          reject(err)
-        }
+    const url = 'mongodb://localhost:27017'
+    const client = new MongoClient(url, { useNewUrlParser: true })
+    return client.connect()
+      .then(_ => {
+        _db = client.db('my-employee')
+        return _db
       })
-    })
+      .catch(err => {
+        console.error(err)
+        client.close()
+      })
   }
 }
 
-export function mongo (cb) {
-  return ensureConnect().then(db => cb(db))
+export function mongo () {
+  return ensureConnect()
 }
