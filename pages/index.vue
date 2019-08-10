@@ -1,22 +1,21 @@
 <template>
-  <div class="container">
+  <div class="w-full h-full">
     <div>
-      <h2 class="subtitle">
+      <nuxt-link to="/" tag="h1">
         My sensational Nuxt.js project
-      </h2>
-      <div>
-        <nuxt-child />
-      </div>
+      </nuxt-link>
+      <nuxt-link to="/new">
+        New Employee
+      </nuxt-link>
     </div>
+    <main>
+      <nuxt-child />
+    </main>
   </div>
 </template>
 
 <script>
 export default {
-  components: {},
-  mounted () {
-    console.log(this.$repo)
-  }
 }
 </script>
 
