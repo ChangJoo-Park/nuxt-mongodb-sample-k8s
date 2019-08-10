@@ -8,7 +8,7 @@
           :to="`/${item._id}`"
           tag="li"
         >
-          {{ item._id }}
+          {{ item.name }}
         </nuxt-link>
       </ul>
     </main>
