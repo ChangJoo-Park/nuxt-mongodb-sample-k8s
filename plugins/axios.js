@@ -1,6 +1,6 @@
-export default function ({ $axios, store }) {
+export default function ({ $axios }) {
   $axios.onRequest((config) => {
-    config.headers.common.authorization = store.state.token
+    // config.headers.common.authorization = store.state.token
     // config.headers.common['token-type'] = store.state.user.headers.token_type
     // config.headers.common['client'] = store.state.user.headers.client
     // config.headers.common['expiry'] = store.state.user.headers.expiry
