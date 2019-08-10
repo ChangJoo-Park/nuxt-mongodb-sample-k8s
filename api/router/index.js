@@ -7,9 +7,16 @@ export const createRouter = () => {
   router.use(bodyParser.json())
 
   router.get('/api/employees', (req, res) => {
-    mongo((db) => {
-      console.log(db)
-      return res.json([])
+    mongo()
+      .then(db => {
+        const collection = db.collection('employee')
+        collection.find().toArray()
+          .then(result => {
+            res.json([])
+          })
+      })
+      .catch(err => {
+        res.json(err)
     })
   })
 
