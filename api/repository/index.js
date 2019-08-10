@@ -1,14 +1,25 @@
 export default $axios => ({
-  create () {
-    return $axios({ method: 'post' })
+  create (newName) {
+    return $axios({
+      url: '/api/employees',
+      method: 'post',
+      data: {
+        name: newName
+      }
+    })
   },
 
-  read () {
-    return $axios({ method: 'get' })
+  read (id) {
+    const url = id ? `/api/employees/${id}` : `/api/employees`
+    return $axios({ url, method: 'get' })
   },
 
-  delete () {
-    return $axios({ method: 'delete' })
+  delete (id) {
+    if (id) {
+      return $axios({ url: `/api/employees/${id}`, method: 'delete' })
+    } else {
+      return $axios({ url: `/api/employees`, method: 'delete' })
+    }
   },
 
   update () {
