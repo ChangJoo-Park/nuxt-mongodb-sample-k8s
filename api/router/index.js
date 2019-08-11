@@ -38,8 +38,12 @@ export const createRouter = () => {
     return res.json([])
   })
 
-  router.delete('/api/employees/:id', (req, res) => {
-    return res.json({})
+  router.delete('/api/employees/:_id', (req, res) => {
+    const { _id } = req.params
+    mongo()
+      .then(db => db.collection('employee').deleteOne({ _id: ObjectId(_id) }))
+      .then(result => res.json(result))
+      .catch(err => res.status(400).json(err))
   })
 
   return router
