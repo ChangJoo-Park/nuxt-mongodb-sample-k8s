@@ -13,6 +13,9 @@
         {{ item.name }}
       </div>
       <br>
+      <button class="button--green" @click="$router.push(`/${item._id}/edit`)">
+        Edit
+      </button>
       <button class="button--red" @click="remove">
         Remove
       </button>
@@ -34,6 +37,8 @@ export default {
   },
   methods: {
     remove (_id) {
+      if (!window.confirm('Are you sure?')) { return }
+
       this.$repo.delete(this.item._id)
         .then((response) => {
           console.log(response)
