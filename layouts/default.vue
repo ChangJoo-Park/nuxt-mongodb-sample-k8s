@@ -2,7 +2,7 @@
   <nuxt />
 </template>
 
-<style>
+<style lang="postcss">
 html, body, #__nuxt, #__layout {
   width: 100%;
   height: 100%;
@@ -54,5 +54,30 @@ html {
 .button--grey:hover {
   color: #fff;
   background-color: #35495e;
+}
+
+.button--red {
+  display: inline-block;
+  border-radius: 4px;
+  border: 1px solid #f56565;
+  color: #f56565;
+  text-decoration: none;
+  padding: 10px 30px;
+  margin-left: 15px;
+}
+
+.button--red:hover {
+  color: #fff;
+  background-color: #f56565;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.page-title {
+  @apply text-6xl font-bold mb-4;
 }
 </style>
