@@ -15,11 +15,8 @@ export default $axios => ({
   },
 
   delete (id) {
-    if (id) {
-      return $axios({ url: `/api/employees/${id}`, method: 'delete' })
-    } else {
-      return $axios({ url: `/api/employees`, method: 'delete' })
-    }
+    const url = id ? `/api/employees/${id}` : `/api/employees`
+    return $axios({ url, method: 'delete' })
   },
 
   update () {
