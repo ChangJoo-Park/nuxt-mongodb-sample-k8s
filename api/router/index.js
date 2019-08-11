@@ -18,6 +18,13 @@ export const createRouter = () => {
     const { name = '' } = req.body
     mongo()
       .then(db => db.collection('employee').insertOne({ name }))
+      .then(result => {
+        if (!!result['ops'][0]) {
+          return result['ops'][0]
+        } else {
+          return res.status(500).json({ message: 'Create Error'})
+        }
+      })
       .then(result => res.json(result))
       .catch(err => res.json(err))
   })
@@ -30,8 +37,21 @@ export const createRouter = () => {
       .catch(err => res.status(400).json(err))
   })
 
-  router.put('/api/employees/:id', (req, res) => {
-    return res.json({})
+  router.put('/api/employees/:_id', (req, res) => {
+    const { _id } = req.params
+    const { _id: bodyId, name } = req.body
+
+    if (_id !== bodyId) {
+      res.status(400).json({message: 'Error'})
+    }
+
+    const findQuery = { _id: ObjectId(_id) }
+    const modifyQuery = { $set: { name } }
+
+    mongo()
+      .then(db => db.collection('employee').updateOne(findQuery, modifyQuery))
+      .then(result => res.json(result))
+      .catch(err => res.status(400).json(err))
   })
 
   router.delete('/api/employees', (req, res) => {

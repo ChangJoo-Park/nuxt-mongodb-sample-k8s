@@ -19,7 +19,14 @@ export default $axios => ({
     return $axios({ url, method: 'delete' })
   },
 
-  update () {
-    return $axios({ method: 'put' })
+  update (id, updateName) {
+    return $axios({
+      url: `/api/employees/${id}`,
+      method: 'put',
+      data: {
+        _id: id,
+        name: updateName
+      }
+    })
   }
 })
