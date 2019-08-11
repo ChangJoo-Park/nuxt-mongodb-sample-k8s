@@ -1,16 +1,18 @@
 <template>
   <div class="w-full h-full">
-    <div>
-      <nuxt-link to="/" tag="h1">
-        My sensational Nuxt.js project
-      </nuxt-link>
-      <nuxt-link to="/new">
-        New Employee
-      </nuxt-link>
+    <div class="container">
+      <nav class="mb-4">
+        <nuxt-link to="/" class="button--green">
+          Home
+        </nuxt-link>
+        <nuxt-link to="/new" class="button--green">
+          New Employee
+        </nuxt-link>
+      </nav>
+      <main>
+        <nuxt-child />
+      </main>
     </div>
-    <main>
-      <nuxt-child />
-    </main>
   </div>
 </template>
 
