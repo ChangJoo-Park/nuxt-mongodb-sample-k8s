@@ -1,10 +1,9 @@
 <template>
   <div>
-    <div>New</div>
+    <h1 class="page-title">
+      New Employee
+    </h1>
     <form class="p-4" @submit.prevent="submit">
-      <h2 class="font-bold pb-4 text-lg">
-        New Employee
-      </h2>
       <div class="pb-4">
         <label for="name">Name</label>
         <input
@@ -16,7 +15,7 @@
           required
         >
       </div>
-      <input type="submit">
+      <input type="submit" class="button--grey">
     </form>
   </div>
 </template>
