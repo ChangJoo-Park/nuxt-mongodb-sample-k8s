@@ -15,7 +15,7 @@
           required
         >
       </div>
-      <input type="submit" class="button--grey">
+      <input type="submit" value="Create" class="button--grey">
     </form>
   </div>
 </template>
@@ -30,12 +30,8 @@ export default {
   methods: {
     submit () {
       this.$repo.create(this.name)
-        .then((result) => {
-          console.log(result)
-          this.$router.push('/')
-        }).catch((err) => {
-          console.log(err)
-        })
+        .then(response => this.$router.push(`/${response.data._id}`))
+        .catch(err => console.log(err))
     }
   }
 }
