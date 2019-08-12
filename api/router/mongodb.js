@@ -2,11 +2,12 @@ import { MongoClient } from 'mongodb'
 
 let _db = null
 
+const mongoHost = process.env.MONGO_HOST || 'localhost'
 const ensureConnect = () => {
   if (_db) {
     return Promise.resolve(_db)
   } else {
-    const url = 'mongodb://localhost:27017'
+    const url = `mongodb://${mongoHost}:27017`
     const client = new MongoClient(url, { useNewUrlParser: true })
     return client.connect()
       .then(_ => {
