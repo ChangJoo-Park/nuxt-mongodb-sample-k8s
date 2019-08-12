@@ -1,4 +1,3 @@
-
 module.exports = {
   mode: 'universal',
   /*
@@ -65,5 +64,10 @@ module.exports = {
   },
   serverMiddleware: [
     '~/api/router-middleware'
-  ]
+  ],
+  axios: {
+    proxy: {
+      "/api/": { target: process.env.API_URL }
+    }
+  }
 }
