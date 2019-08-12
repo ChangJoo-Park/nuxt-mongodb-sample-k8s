@@ -7,7 +7,7 @@ const ensureConnect = () => {
   if (_db) {
     return Promise.resolve(_db)
   } else {
-    const url = `mongodb://${mongoHost}:27017`
+    const url = `mongodb://${mongoHost}:27017?repliaceSet=rs0`
     const client = new MongoClient(url, { useNewUrlParser: true })
     return client.connect()
       .then(_ => {
