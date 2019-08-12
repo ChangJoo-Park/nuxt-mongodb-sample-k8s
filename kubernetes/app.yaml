@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: app
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels: # labels to select/identify the deployment
+        app: app
+    spec:     # pod spec
+      containers:
+      - name: app
+        image: app:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 3000
