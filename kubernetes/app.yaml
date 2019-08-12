@@ -15,3 +15,23 @@ spec:
         imagePullPolicy: Never
         ports:
         - containerPort: 3000
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: app
+  namespace: default
+  labels:
+    app: app
+spec:
+  ports:
+  - protocol: TCP
+    port: 3000
+    targetPort: 3000
+  selector:
+    app: app
+  type: LoadBalancer
+  sessionAffinity: None
+  externalTrafficPolicy: Cluster
+status:
+  loadBalancer: {}
